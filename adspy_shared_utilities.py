@@ -8,7 +8,7 @@ import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap, BoundaryNorm
 from sklearn import neighbors
 import matplotlib.patches as mpatches
-import graphviz
+#import graphviz
 from sklearn.tree import export_graphviz
 import matplotlib.patches as mpatches
 
@@ -18,7 +18,7 @@ def load_crime_dataset():
 
     crime = pd.read_table('CommViolPredUnnormalizedData.txt', sep=',', na_values='?')
     # remove features with poor coverage or lower relevance, and keep ViolentCrimesPerPop target column
-    columns_to_keep = [5, 6] + list(range(11,26)) + list(range(32, 103)) + [145]  
+    columns_to_keep = [5, 6] + list(range(11,26)) + list(range(32, 103)) + [145]
     crime = crime.ix[:,columns_to_keep].dropna()
 
     X_crime = crime.ix[:,range(0,88)]
@@ -167,7 +167,7 @@ def plot_class_regions_for_classifier(clf, X, y, X_test=None, y_test=None, title
     if (title is not None):
         plt.title(title)
     plt.show()
-    
+
 def plot_fruit_knn(X, y, n_neighbors, weights):
     X_mat = X[['height', 'width']].values()
     y_mat = y.values()
@@ -181,10 +181,10 @@ def plot_fruit_knn(X, y, n_neighbors, weights):
 
     # Plot the decision boundary by assigning a color in the color map
     # to each mesh point.
-    
+
     mesh_step_size = .01  # step size in the mesh
     plot_symbol_size = 50
-    
+
     x_min, x_max = X_mat[:, 0].min() - 1, X_mat[:, 0].max() + 1
     y_min, y_max = X_mat[:, 1].min() - 1, X_mat[:, 1].max() + 1
     xx, yy = numpy.meshgrid(numpy.arange(x_min, x_max, mesh_step_size),
@@ -207,10 +207,10 @@ def plot_fruit_knn(X, y, n_neighbors, weights):
     patch3 = mpatches.Patch(color='#AFAFAF', label='lemon')
     plt.legend(handles=[patch0, patch1, patch2, patch3])
 
-        
+
     plt.xlabel('height (cm)')
     plt.ylabel('width (cm)')
-    
+
     plt.show()
 
 def plot_two_class_knn(X, y, n_neighbors, weights, X_test, y_test):
@@ -226,10 +226,10 @@ def plot_two_class_knn(X, y, n_neighbors, weights, X_test, y_test):
 
     # Plot the decision boundary by assigning a color in the color map
     # to each mesh point.
-    
+
     mesh_step_size = .01  # step size in the mesh
     plot_symbol_size = 50
-    
+
     x_min, x_max = X_mat[:, 0].min() - 1, X_mat[:, 0].max() + 1
     y_min, y_max = X_mat[:, 1].min() - 1, X_mat[:, 1].max() + 1
     xx, yy = numpy.meshgrid(numpy.arange(x_min, x_max, mesh_step_size),
